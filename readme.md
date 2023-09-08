@@ -1,7 +1,30 @@
-Il semble que votre backlog soit déjà bien défini, mais voici quelques suggestions pour l'améliorer davantage :
 # MyCoach
 
 Permet de centraliser, gerer et centraliser un club de sport, de la gestion des membres à la gestion des entrainements, evenements, etc.
+
+## Environnement de développement
+#### Pour le back-end
+- PHP
+- MySQL
+- Apache
+
+#### Pour le front-end
+- React ou Vue.js (à définir)
+- tailwindcss
+
+
+## TODO :
+
+1. [ ] Définir les fonctionnalités de base (voir backlog)
+2. [ ] Définir le design de base
+3. [ ] Définir les technologies à utiliser (react/vue.js, tailwindcss, etc.)
+4. [ ] Définir les fonctionnalités à implémenter en priorité
+5. [ ] Commencer à coder
+6. [ ] Définir les fonctionnalités à implémenter en secondaire
+7. [ ] Commencer à coder
+8. [ ] Définir les fonctionnalités à implémenter en dernier
+9. [ ] Commencer à coder
+
 
 
 ## Backlog

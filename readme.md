@@ -12,6 +12,12 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 - React ou Vue.js (à définir)
 - tailwindcss
 
+#### Logiciels
+- Visual Studio Code
+- Git
+- GitHub
+- EasyPHP Devserver
+
 
 ## TODO :
 

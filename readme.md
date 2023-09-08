@@ -47,6 +47,6 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 - [ ] Page d'inscription
   - [ ] Simplifier le processus d'inscription en demandant uniquement les informations essentielles.
 
-### Privée (**F1**) - Pour le coach (administrateur) :
+### Privée (**F2**) - Pour le coach (administrateur) :
 
-### Privée (**F1**) - Pour les membres :
+### Privée (**F3**) - Pour les membres :

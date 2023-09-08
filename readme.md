@@ -14,53 +14,10 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 - Actualités
 - Dotations
 
-## pour le club : 
-#### Administratif
-- Hébergement
-
-- Scolarité
-
-- Secrétariat
-
-- Infrastructures
-
-#### Media Center
-- Bibliothèque de Fichiers :Vidéos, PDF, Photos
-
-
-## pour les equipes :
-#### Performance
-- Médical
-
-- Questionnaires
-
-- Charge de travail
-
-- Tests & résultats
-
-- Données GPS
-
-#### Analytics
-- Analyse de match
-
-- Statistiques
-
-- Vidéos
-
-#### Perf BI
-- Dashboards
-
-- Variables d'analyse
-
-#### GPS
-- Offres & avantages Brassières GPS
-
-- Partenariat spécifique avec McLloyd et ASI
-
-
 
 ## Backlog
 ### Publique :
+- [ ] Page d'accueil
 - [ ] Page d'accueil avec les formules
 - [ ] Demande de démo
 - [ ] Page de connexion
@@ -78,3 +35,7 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 
 #### Pour les équipes :
 - [ ] Son propre espace de travail
+- [ ] Statistiques de l'équipe
+- [ ] Statistiques personnelles
+- [ ] Calendrier de l'équipe
+- [ ] Contact avec les membres de l'équipe et coach

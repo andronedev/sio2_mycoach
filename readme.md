@@ -28,15 +28,15 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 
 | Étape | État |
 |-|-|
-| 1. Définir les fonctionnalités de base (voir backlog) | [ ] |
-| 2. Définir le design de base | [ ] |
-| 3. Définir les technologies à utiliser (react/vue.js, tailwindcss, etc.) | [ ] |  
-| 4. Définir les fonctionnalités à implémenter en priorité | [ ] |
-| 5. Commencer à coder | [ ] |
-| 6. Définir les fonctionnalités à implémenter en secondaire | [ ] |
-| 7. Commencer à coder | [ ] |  
-| 8. Définir les fonctionnalités à implémenter en dernier | [ ] |
-| 9. Commencer à coder | [ ] |
+| 1. Définir les fonctionnalités de base (voir backlog) | <ul><li>[X] Fait</li><ul> |
+| 2. Définir le design de base | <ul><li>[ ] </li><ul> |
+| 3. Définir les technologies à utiliser (react/vue.js, tailwindcss, etc.) | <ul><li>[ ] </li><ul> |  
+| 4. Définir les fonctionnalités à implémenter en priorité | <ul><li>[ ] </li><ul> |
+| 5. Commencer à coder | <ul><li>[ ] </li><ul> |
+| 6. Définir les fonctionnalités à implémenter en secondaire | <ul><li>[ ] </li><ul> |
+| 7. Commencer à coder | <ul><li>[ ] </li><ul> |  
+| 8. Définir les fonctionnalités à implémenter en dernier | <ul><li>[ ] </li><ul> |
+| 9. Commencer à coder | <ul><li>[ ] </li><ul> |
 
 ## Backlog 
 

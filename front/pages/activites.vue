@@ -68,6 +68,7 @@
           </span>
         </div>
       </div>
+      
     </div>
     <div v-show="isLoading" class="flex justify-center items-center">
       <h1 class="text-3xl font-bold text-center">

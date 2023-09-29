@@ -21,8 +21,6 @@ definePageMeta({
 export default {
   // use layout home
 
-
-
 }
  
 </script>

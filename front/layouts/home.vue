@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-transparent fixed w-full h-full min-h-screen">
-        <NavbarMain />
+    <div class="bg-black fixed w-full h-full min-h-screen">
+        <navbar isHome="true" />
       <slot />
     </div>
 </template>

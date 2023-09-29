@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       
     },
   },
-  plugins: ['~/plugins/responsive-video-background-player.js']
+  plugins: [{src:'~/plugins/responsive-video-background-player.js' ,ssr: false}],
 
+  modules: ['nuxt-icon']
 })

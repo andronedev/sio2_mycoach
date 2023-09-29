@@ -28,7 +28,7 @@ Permet de centraliser, gerer et centraliser un club de sport, de la gestion des 
 
 | Étape | État |
 |-|-|
-| 1. Définir les fonctionnalités de base (voir backlog) | <ul><li>[X]</li><ul> |
+| 1. Définir les fonctionnalités de base (voir backlog) | <ul><li>[X] </li><ul> |
 | 2. Définir le design de base | <ul><li>[X] </li><ul> |
 | 3. Définir les technologies à utiliser (react/vue.js, tailwindcss, etc.) | <ul><li>[X] </li><ul> |  
 | 4. Définir les fonctionnalités à implémenter en priorité | <ul><li>[X] </li><ul> |

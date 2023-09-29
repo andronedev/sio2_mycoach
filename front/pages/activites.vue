@@ -1,44 +1,75 @@
 <template>
   <div>
-    <table class="table-fixed w-full select-none" v-show="!isLoading">
-      <thead class="bg-gray-200">
-        <tr>
-          <th class="px-4 py-2 w-20">Heure</th>
-          <th
-            class="px-4 py-2 border-l border-gray-300"
-            v-for="day in days"
-            :key="day"
+    
+    <div
+      v-show="!isLoading"
+      class="flex flex-col md:flex-row justify-center items-start reallyfull"
+    >
+      <table
+        class="m-4 table-fixed h-full w-full select-none border-collapse border border-solid border-2 border-black  rounded-lg overflow-hidden shadow-lg bg-white"
+      >
+        <thead class="bg-gray-200">
+          <tr > 
+            <th class="px-4 py-2 w-20">Heure</th>
+            <th
+              class="px-4 py-2"
+              v-for="day in days"
+              :key="day"
+            >
+              {{ day }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            v-for="hour in hours"
+            class="border border-gray-300"
+            :key="hour"
           >
-            {{ day }}
-          </th>
-        </tr>
-      </thead>
+            <td class="px-4 py-2">{{ hour }}</td>
 
-      <tbody>
-        <tr
-          v-for="hour in hours"
-          class="border-l border-gray-300 border-b border-gray-200"
-          :key="hour"
-        >
-          <td class="px-4 py-2">{{ hour }}</td>
+            <td
+              class="px-4 py-2 text-black text-center font-semibold border border-gray-300 "
+              v-for="day in days"
+              :class="{
+                'bg-orange-200': getSession(day, hour),
+                'cursor-pointer': getSession(day, hour),
+              }"
+              @click="select(day, hour)"
+              :key="day"
+            >
+              {{ getSession(day, hour) ? getSession(day, hour).activity : "" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex-auto w-full md:w-96 flex flex-col m-4 md:ml-0">
+        <div class="p-4 bg-orange-300 rounded-lg shadow-lg w-full shadow-inner">
+          <div v-if="selected">
+            <h1 class="font-bold">{{ selected.activity }}</h1>
+            <span class="text-gray-800 font-light">
+              {{ selected.day }} de {{ selected.hour }}
+            </span>
+            <p>{{ selected.description }}</p>
+          </div>
 
-          <td
-            class="px-4 py-2 border-l border-gray-300"
-            v-for="day in days"
-            :class="{
-              'bg-green-400': getSession(day, hour),
-              'cursor-pointer': getSession(day, hour),
-            }"
-            @click="showPopup(day, hour)"
-            :key="day"
-          >
-            {{ getSession(day, hour) ? getSession(day, hour).activity : "" }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <div v-else>
+            <h1 class="font-bold">Aucune activité sélectionnée</h1>
+            <p>Sélectionnez une activité pour en savoir plus</p>
+          </div>
+        </div>
 
-    <div v-show="isLoading" class="flex justify-center items-center ">
+        <div class="mt-4 p-4 bg-gray-500 text-white rounded-lg shadow-lg w-full h-full shadow-inner">
+          <h1 class="font-bold">S'inscrire</h1>
+
+          <span class="text-gray-300 font-light">
+            Veuillez vous connecter pour vous inscrire à une activité
+          </span>
+        </div>
+      </div>
+    </div>
+    <div v-show="isLoading" class="flex justify-center items-center">
       <h1 class="text-3xl font-bold text-center">
         <Icon name="line-md:loading-loop" size="64" />
       </h1>
@@ -47,6 +78,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -76,6 +108,7 @@ export default {
       ],
       isLoading: true,
       sessions: [],
+      selected: null,
     };
   },
 
@@ -88,12 +121,10 @@ export default {
       });
     },
 
-    showPopup(day, hour) {
+    select(day, hour) {
       const session = this.getSession(day, hour);
       if (session) {
-        alert(
-          `${session.activity} : ${session.description} le ${session.day} de ${session.hour}`
-        );
+        this.selected = session;
       }
     },
   },
@@ -118,3 +149,10 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.reallyfull {
+  height: calc(100vh - 100px);
+}
+</style>

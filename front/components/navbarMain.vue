@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed w-full text-white backdrop-blur-3xl	">
+  <header class="fixed w-full text-white backdrop-blur-3xl	max-h-50">
     <nav class="py-4">
       <div class="flex justify-start space-x-4 pl-4 w-full justify-between">
         <ul class="flex justify-start space-x-4 pl-4">

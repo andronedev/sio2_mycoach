@@ -1,5 +1,5 @@
 <template>
-  <header :class="isHome ? 'fixed w-full text-white backdrop-blur-3xl	max-h-50' :'sticky top-0 z-50 max-h-50' ">
+  <header :class="isHome ? 'fixed w-full text-white backdrop-blur-3xl	max-h-50' :'bg-background sticky top-0 z-50 max-h-50' ">
     <nav class="py-4">
       <div class="flex justify-start space-x-4 pl-4 w-full justify-between">
         <ul class="flex justify-start space-x-4 pl-4">

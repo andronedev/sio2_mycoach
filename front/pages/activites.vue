@@ -5,10 +5,10 @@
       v-show="!isLoading"
       class="flex flex-col md:flex-row justify-center items-start reallyfull"
     >
-      <table
-        class="m-4 table-fixed h-full w-full select-none border-collapse border border-solid border-2 border-black  rounded-lg overflow-hidden shadow-lg bg-white"
-      >
-        <thead class="bg-gray-200">
+    <div class="m-4 h-full w-full select-none border-collapse rounded-lg overflow-hidden shadow-xl bg-gray-50 border-2 border-gray-400">
+    <table class=" table-fixed  h-full w-full rounded-lg overflow-hidden">
+
+        <thead class="bg-gray-300">
           <tr > 
             <th class="px-4 py-2 w-20">Heure</th>
             <th
@@ -43,7 +43,7 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="flex-auto w-full md:w-96 flex flex-col m-4 md:ml-0">
         <div class="p-4 bg-orange-300 rounded-lg shadow-lg w-full shadow-inner">
           <div v-if="selected">

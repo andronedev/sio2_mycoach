@@ -3,7 +3,7 @@
     
     <div
       v-show="!isLoading"
-      class="flex flex-col md:flex-row justify-center items-start reallyfull"
+      class="flex flex-col md:flex-row justify-center items-start reallyfulltable"
     >
     <div class="m-4 h-full w-full select-none border-collapse rounded-lg overflow-hidden shadow-xl bg-gray-50 border-2 border-gray-400">
     <table class=" table-fixed  h-full w-full rounded-lg overflow-hidden">
@@ -153,7 +153,5 @@ export default {
 
 
 <style scoped>
-.reallyfull {
-  height: calc(100vh - 100px);
-}
+
 </style>

@@ -1,20 +1,19 @@
 <template>
-  <section>
+  <section class="reallyfull">
     <div
-      class="relative flex justify-center max-h-full overflow-hidden lg:px-0 md:px-12"
+      class="relative flex justify-center h-full overflow-hidden lg:px-0 md:px-12"
     >
       <div
-        class="relative z-10 flex flex-col flex-1 px-4 py-10 bg-white shadow-2xl lg:py-24 md:flex-none md:px-28 sm:justify-center"
+        class="shadow-inner relative z-10 flex flex-col flex-1 px-4 py-10 bg-white shadow-2xl lg:py-24 md:flex-none md:px-28 sm:justify-center"
       >
         <div
           class="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4"
         >
           <div class="flex flex-col">
             <div>
-              <h2 class="text-4xl text-black">Let's get started!</h2>
+              <h2 class="text-4xl text-black">Bienvenue!</h2>
               <p class="mt-2 text-sm text-gray-500">
-                Complete the details below so I can process your request and
-                then schedule a time to discuss your goals.
+                Connectez-vous avec votre compte.
               </p>
             </div>
           </div>
@@ -25,82 +24,65 @@
               <div>
                 <label
                   class="block mb-3 text-sm font-medium text-gray-600"
-                  name="name"
+                  for="email"
                 >
-                  First name
+                  Adresse e-mail
                 </label>
                 <input
+                  id="email"
                   class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                  placeholder="Your name"
-                />
-              </div>
-              <div class="col-span-full">
-                <label
-                  class="block mb-3 text-sm font-medium text-gray-600"
-                  name="company"
-                >
-                  What is the name of your company / organisation?
-                </label>
-                <input
-                  class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                  placeholder="Company name"
-                />
-              </div>
-              <div class="col-span-full">
-                <label
-                  class="block mb-3 text-sm font-medium text-gray-600"
-                  name="email"
-                >
-                  How shall we contact you?
-                </label>
-                <input
-                  class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                  placeholder="email@example.com"
-                  autocomplete="off"
+                  placeholder="Votre adresse e-mail"
                   type="email"
+                  required
                 />
               </div>
               <div>
-                <div>
-                  <label
-                    class="block mb-3 text-sm font-medium text-gray-600"
-                    name="message"
-                  >
-                    Project details
-                  </label>
-                  <div class="mt-1">
-                    <textarea
-                      class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                      placeholder="What are you working on?"
-                      rows="4"
-                    ></textarea>
-                  </div>
-                </div>
+                <label
+                  class="block mb-3 text-sm font-medium text-gray-600"
+                  for="password"
+                >
+                  Mot de passe
+                </label>
+                <input
+                  id="password"
+                  class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                  placeholder="Votre mot de passe"
+                  type="password"
+                  required
+                />
               </div>
               <div class="col-span-full">
                 <button
-                  class="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
+                  class="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
                   type="submit"
                 >
-                  Submit your request
+                  Connexion
                 </button>
+              </div>
+              <div class="col-span-full">
+                <NuxtLink
+                  class="items-center justify-center w-full px-6 py-2.5 text-center text-black duration-200 bg-white border-2 border-black rounded-full inline-flex hover:bg-black hover:border-black hover:text-white focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
+                  type="button"
+                  to="/register"
+                >
+                  Je n'ai pas encore de compte
+                </NuxtLink>
               </div>
             </div>
           </form>
         </div>
       </div>
-      <div class="hidden bg-white lg:block lg:flex-1 lg:relative sm:contents">
+      <div class="hidden lg:block lg:flex-1 lg:relative sm:contents bg-black">
         <div
-          class="absolute inset-0 object-cover w-full min-h-screen bg-white"
+          class="absolute inset-0 object-cover w-full min-h-screen bg-black"
           alt=""
-
         >
           <video
             autoplay
             muted
             loop
             id="bkgrdVideo"
-            class=" w-full h-full bg-gray-200 object-cover"
+            class="w-full h-full bg-black object-cover shadow-inner"
           >
             <source src="cinematicv3.mp4" type="video/mp4" />
           </video>
@@ -111,6 +93,14 @@
 </template>
 
 <script>
+
+definePageMeta({
+  pageTransition: {
+    name: 'slide-right',
+    mode: 'out-in'
+  },
+})
+
 export default {};
 </script>
 

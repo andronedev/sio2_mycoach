@@ -1,6 +1,17 @@
 
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
+  // app: {
+  //   pageTransition: {
+  //     name: 'fade',
+  //     mode: 'out-in',
+  //   },
+
+  //   layoutTransition: {
+  //     name: "fade",
+  //     mode: "out-in"
+  // },
+  // },
   postcss: {
     plugins: {
       tailwindcss: {},

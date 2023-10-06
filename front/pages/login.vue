@@ -7,7 +7,7 @@
         class="shadow-inner relative z-10 flex flex-col flex-1 px-4 py-10 bg-white shadow-2xl lg:py-24 md:flex-none md:px-28 sm:justify-center"
       >
         <div
-          class="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4"
+          class="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4 "
         >
           <div class="flex flex-col">
             <div>
@@ -17,7 +17,10 @@
               </p>
             </div>
           </div>
-          <form>
+          <form class="mt-8" action="#" method="POST" v-on:submit.prevent="login" v-if="!loading">
+            <div v-if="error" class="text-red-500 text-center">
+              {{ error }}
+            </div>
             <input autocomplete="false" name="hidden" style="display: none" />
             <input name="_redirect" type="hidden" value="#" />
             <div class="mt-4 space-y-6">
@@ -30,6 +33,7 @@
                 </label>
                 <input
                   id="email"
+                  v-model="user.email"
                   class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   placeholder="Votre adresse e-mail"
                   type="email"
@@ -45,6 +49,7 @@
                 </label>
                 <input
                   id="password"
+                  v-model="user.password"
                   class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   placeholder="Votre mot de passe"
                   type="password"
@@ -70,6 +75,11 @@
               </div>
             </div>
           </form>
+          <div v-else class="flex justify-center items-center mt-8 space-y-6">
+            <h1 class="text-3xl font-bold text-center">
+              <Icon name="line-md:loading-loop" size="64" />
+            </h1>
+          </div>
         </div>
       </div>
       <div class="hidden lg:block lg:flex-1 lg:relative sm:contents bg-black">
@@ -92,8 +102,7 @@
   </section>
 </template>
 
-<script>
-
+<script setup>
 definePageMeta({
   pageTransition: {
     name: 'slide-right',
@@ -101,7 +110,42 @@ definePageMeta({
   },
 })
 
-export default {};
+import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+import { useAuthStore } from '~/store/auth'; // import the auth store we just created
+
+const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
+
+const { authenticated } = storeToRefs(useAuthStore()); 
+
+const user = ref({
+  email: '',
+  password: '',
+});
+
+const loading = ref(false);
+const error = ref(null);
+
+const router = useRouter();
+
+const login = async () => {
+  loading.value = true;
+  error.value = null;
+
+  try {
+    await authenticateUser(user.value);
+    if (authenticated.value) {
+      router.push('/activites');
+    } else {
+      error.value = 'Identifiants incorrects';
+    }
+  } catch (err) {
+    error.value = err.message;
+  } finally {
+    loading.value = false;
+  }
+};
+
+
 </script>
 
 <style scoped></style>

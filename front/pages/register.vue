@@ -18,15 +18,32 @@
               </p>
             </div>
           </div>
-          <form>
+          <form class="mt-8 space-y-6" @submit.prevent="register" method="POST">
+            <div v-if="error" class="text-red-500 text-center">
+              {{ error }}
+            </div>
             <input autocomplete="false" name="hidden" style="display: none" />
             <input name="_redirect" type="hidden" value="#" />
             <div class="mt-4 space-y-6">
+              <div>
+                <label class="block mb-3 text-sm font-medium text-gray-600" for="nom">
+                  Vous pseudo
+                </label>
+                <input
+                  v-model="name"
+                  id="nom"
+                  class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                  placeholder="Votre pseudo"
+                  type="nom"
+                  required
+                />
+              </div>
               <div>
                 <label class="block mb-3 text-sm font-medium text-gray-600" for="email">
                   Adresse e-mail
                 </label>
                 <input
+                  v-model="email"
                   id="email"
                   class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   placeholder="Votre adresse e-mail"
@@ -39,6 +56,7 @@
                   Mot de passe
                 </label>
                 <input
+                  v-model="password"
                   id="password"
                   class="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   placeholder="Votre mot de passe"
@@ -79,7 +97,50 @@ definePageMeta({
     mode: 'out-in'
   },
 })
-export default {};
+export default {
+
+
+data() {
+  return {
+    name: '',
+    email: '',
+    password: '',
+    error: '',
+    loading : false,
+  }
+},
+
+methods: {
+  register() {
+    this.loading = true;
+    const formData = new FormData();
+    formData.append('action', 'register');
+    formData.append('nom', this.name);
+    formData.append('email', this.email);
+    formData.append('password', this.password);
+
+    fetch('http://127.0.0.1/edsa-mycoach/auth.php', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          this.error = res.error;
+        } else {
+          //get cookie
+          const token = res.token;
+          //store cookie
+          document.cookie = `PHPSESSID=${token}; path=/`; // Assurez-vous d'ajuster le nom du cookie si nécessaire
+
+          alert('Vous êtes connecté !');
+        }
+      }).finally(() => {
+        this.loading = false;
+      });
+  },
+},
+};
 
 </script>
 

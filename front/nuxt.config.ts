@@ -1,6 +1,5 @@
-
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
   // app: {
   //   pageTransition: {
   //     name: 'fade',
@@ -16,10 +15,11 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
-      
     },
   },
-  plugins: [{src:'~/plugins/responsive-video-background-player.js' ,ssr: false}],
+  plugins: [
+    { src: "~/plugins/responsive-video-background-player.js", ssr: false },
+  ],
 
-  modules: ['nuxt-icon']
-})
+  modules: ["nuxt-icon", "@pinia/nuxt"],
+});

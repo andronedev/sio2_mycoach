@@ -79,7 +79,9 @@
 </template>
 
 <script>
-
+definePageMeta({
+  middleware: 'auth' // this should match the name of the file inside the middleware directory 
+});
 export default {
   data() {
     return {

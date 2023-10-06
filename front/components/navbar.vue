@@ -14,7 +14,7 @@
             >
           </li>
         </ul>
-        <ul class="flex justify-start space-x-4 pr-4">
+        <ul class="flex justify-start space-x-4 pr-4" v-if="!authenticated">
           <li>
             <NuxtLink to="/login" class="hover:text-blue-900">Connexion</NuxtLink>
           </li>
@@ -27,6 +27,20 @@
             </NuxtLink>
           </li>
         </ul>
+        <ul class="flex justify-start space-x-4 pr-4" v-else>
+          <li>
+            <NuxtLink to="/profile" class="hover:text-blue-900">{{ user.name }}</NuxtLink>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-light font-semibold bg-primary px-4 py-2 rounded-xl"
+              @click="logUserOut"
+            >
+              Déconnexion
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -34,6 +48,11 @@
 
 <script>
 // add "isHome" prop
+import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+import { useAuthStore } from '~/store/auth'; // import the auth store we just created
+const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
+
+const { authenticated, user } = storeToRefs(useAuthStore()); 
 
 export default {
   props: {
@@ -42,6 +61,15 @@ export default {
       default: false,
     },
   },
+  setup() {
+    return {
+      authenticated,
+      logUserOut,
+      user,
+    };
+  },
+
+
 };
 
 </script>

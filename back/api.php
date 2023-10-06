@@ -13,13 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // send data as JSON
     echo json_encode($data->fetchAll(PDO::FETCH_ASSOC));
 
-  } else if ($_GET['resource'] === 'coaches') {
-
-    // Récupérer les coachs 
-    // Envoyer au format JSON
-
   } 
-
 }
 
 ?>

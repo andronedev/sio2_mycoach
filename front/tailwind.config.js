@@ -19,6 +19,9 @@ module.exports = {
         accent: "#d29119",
       },
     },
+    
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-bg-patterns'),
+  ],
 };

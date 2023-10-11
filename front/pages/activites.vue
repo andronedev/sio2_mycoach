@@ -48,9 +48,6 @@
         <div class="p-4 bg-orange-300 rounded-lg shadow-lg w-full shadow-inner">
           <div v-if="selected">
             <h1 class="font-bold">{{ selected.activity }}</h1>
-            <span class="text-gray-800 font-light">
-              {{ selected.day }} de {{ selected.hour }}
-            </span>
             <p>{{ selected.description }}</p>
           </div>
 
@@ -60,11 +57,18 @@
           </div>
         </div>
 
-        <div class="mt-4 p-4 bg-gray-500 text-white rounded-lg shadow-lg w-full h-full shadow-inner">
-          <h1 class="font-bold">S'inscrire</h1>
+        <div v-show="selected" class="pattern-dots pattern-indigo-600 pattern-bg-black pattern-size-8 mt-4 p-4 text-white rounded-lg shadow-lg w-full h-full shadow-inner">
+          <h1 class="font-bold">Je veux reserver cette activité : </h1>
 
           <span class="text-gray-300 font-light">
-            Veuillez vous connecter pour vous inscrire à une activité
+            <Icon name="bx:bxs-calendar" size="16" />
+            {{ selected ? selected.day : "" }}
+            <Icon name="bx:bxs-time-five" size="16" />
+            {{ selected ? selected.hour : "" }}
+
+            <button class="mt-4 bg-green-500 hover:bg-green-700 text-black hover:text-white font-bold py-2 px-4 rounded-md w-full">
+              Reserver <Icon name="bx:bxs-flag-checkered" size="16" />
+            </button>
           </span>
         </div>
       </div>
@@ -79,6 +83,7 @@
 </template>
 
 <script>
+
 definePageMeta({
   middleware: 'auth' // this should match the name of the file inside the middleware directory 
 });
@@ -150,6 +155,7 @@ export default {
         console.log(this.sessions);
       });
   },
+  
 };
 </script>
 

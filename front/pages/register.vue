@@ -1,20 +1,36 @@
 <template>
   <section class="reallyfull">
-    <div class="relative flex justify-center h-full overflow-hidden lg:px-0 md:px-12">
-      <div class="hidden lg:block lg:flex-1 lg:relative sm:contents  bg-black">
-        <div class="absolute inset-0 object-cover w-full min-h-screen  bg-black" alt="">
-          <video autoplay muted loop id="bkgrdVideo" class="w-full h-full  bg-black object-cover shadow-inner">
+    <div
+      class="relative flex justify-center h-full overflow-hidden lg:px-0 md:px-12"
+    >
+      <div class="hidden lg:block lg:flex-1 lg:relative sm:contents bg-black">
+        <div
+          class="absolute inset-0 object-cover w-full min-h-screen bg-black"
+          alt=""
+        >
+          <video
+            autoplay
+            muted
+            loop
+            id="bkgrdVideo"
+            class="w-full h-full bg-black object-cover shadow-inner"
+          >
             <source src="cinematicv3.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
-      <div class="shadow-inner relative z-10 flex flex-col flex-1 px-4 py-10 bg-white shadow-2xl lg:py-24 md:flex-none md:px-28 sm:justify-center">
-        <div class="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
+      <div
+        class="shadow-inner relative z-10 flex flex-col flex-1 px-4 py-10 bg-white shadow-2xl lg:py-24 md:flex-none md:px-28 sm:justify-center"
+      >
+        <div
+          class="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4"
+        >
           <div class="flex flex-col">
             <div>
               <h2 class="text-4xl text-black">Bienvenue!</h2>
               <p class="mt-2 text-sm text-gray-500">
-                Créez votre compte pour accéder à l'ensemble des fonctionnalités de MyCoach.
+                Créez votre compte pour accéder à l'ensemble des fonctionnalités
+                de MyCoach.
               </p>
             </div>
           </div>
@@ -26,7 +42,10 @@
             <input name="_redirect" type="hidden" value="#" />
             <div class="mt-4 space-y-6">
               <div>
-                <label class="block mb-3 text-sm font-medium text-gray-600" for="nom">
+                <label
+                  class="block mb-3 text-sm font-medium text-gray-600"
+                  for="nom"
+                >
                   Vous pseudo
                 </label>
                 <input
@@ -39,7 +58,10 @@
                 />
               </div>
               <div>
-                <label class="block mb-3 text-sm font-medium text-gray-600" for="email">
+                <label
+                  class="block mb-3 text-sm font-medium text-gray-600"
+                  for="email"
+                >
                   Adresse e-mail
                 </label>
                 <input
@@ -52,7 +74,10 @@
                 />
               </div>
               <div>
-                <label class="block mb-3 text-sm font-medium text-gray-600" for="password">
+                <label
+                  class="block mb-3 text-sm font-medium text-gray-600"
+                  for="password"
+                >
                   Mot de passe
                 </label>
                 <input
@@ -90,58 +115,66 @@
 </template>
 
 <script>
+import { useAuthStore } from "~/store/auth"; // import the auth store we just created
+import { storeToRefs } from "pinia"; // import storeToRefs helper hook from pinia
+const { authenticated } = storeToRefs(useAuthStore());
 
+const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
+const router = useRouter();
 definePageMeta({
   pageTransition: {
-    name: 'slide-left',
-    mode: 'out-in'
+    name: "slide-left",
+    mode: "out-in",
   },
-})
+});
 export default {
-
-
-data() {
-  return {
-    name: '',
-    email: '',
-    password: '',
-    error: '',
-    loading : false,
-  }
-},
-
-methods: {
-  register() {
-    this.loading = true;
-    const formData = new FormData();
-    formData.append('action', 'register');
-    formData.append('nom', this.name);
-    formData.append('email', this.email);
-    formData.append('password', this.password);
-
-    fetch('http://127.0.0.1/edsa-mycoach/auth.php', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          this.error = res.error;
-        } else {
-          //get cookie
-          const token = res.token;
-          //store cookie
-          document.cookie = `PHPSESSID=${token}; path=/`; // Assurez-vous d'ajuster le nom du cookie si nécessaire
-
-          alert('Vous êtes connecté !');
-        }
-      }).finally(() => {
-        this.loading = false;
-      });
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      error: "",
+      loading: false,
+    };
   },
-},
-};
 
+  methods: {
+    register() {
+      this.loading = true;
+      const formData = new FormData();
+      formData.append("action", "register");
+      formData.append("nom", this.name);
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+
+      fetch("http://127.0.0.1/edsa-mycoach/auth.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then(async (res) => {
+          if (!res.success) {
+            this.error = res.error;
+          } else {
+            //store cookie
+            await authenticateUser({
+              email: this.email,
+              password: this.password,
+            });
+            if (authenticated.value) {
+              router.push("/activites");
+            } else {
+              error.value = "Identifiants incorrects";
+            }
+            alert("Vous êtes connecté !");
+          }
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>
 
 <style scoped></style>

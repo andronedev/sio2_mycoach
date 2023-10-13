@@ -1,4 +1,7 @@
+import initAuth from "./plugins/initAuth";
+
 export default defineNuxtConfig({
+
   css: ["~/assets/css/main.css"],
   // app: {
   //   pageTransition: {
@@ -18,8 +21,10 @@ export default defineNuxtConfig({
     },
   },
   plugins: [
+    {src: '~/plugins/initAuth.js', mode: 'client'},
     { src: "~/plugins/responsive-video-background-player.js", ssr: false },
   ],
 
   modules: ["nuxt-icon", "@pinia/nuxt"],
+ 
 });

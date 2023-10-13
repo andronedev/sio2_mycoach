@@ -57,8 +57,8 @@
           </div>
         </div>
 
-        <div v-show="selected" class="pattern-dots pattern-indigo-600 pattern-bg-black pattern-size-8 mt-4 p-4 text-white rounded-lg shadow-lg w-full h-full shadow-inner">
-          <h1 class="font-bold">Je veux reserver cette activité : </h1>
+        <div v-show="selected" class="pattern-wavy pattern-indigo-900 pattern-bg-black pattern-size-8  pattern-opacity-100 mt-4 p-4 text-white rounded-lg shadow-lg w-full h-full shadow-inner">
+          <h1 class="font-semibold text-md text-2xl ">Reserver ce créneau</h1>
 
           <span class="text-gray-300 font-light">
             <Icon name="bx:bxs-calendar" size="16" />

@@ -108,6 +108,7 @@ definePageMeta({
     name: 'slide-right',
     mode: 'out-in'
   },
+  middleware: 'auth'
 })
 
 import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia

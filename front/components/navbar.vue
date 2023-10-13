@@ -46,14 +46,22 @@
   </header>
 </template>
 
+<script setup>
+import { ref, computed } from 'vue';
+import { useAuthStore } from '~/store/auth';
+
+const authStore = useAuthStore();
+const authenticated = computed(() => authStore.authenticated);
+const user = computed(() => authStore.user);
+
+const logUserOut = () => {
+  authStore.logUserOut();
+};
+
+const isHome = ref(false); // Si vous voulez toujours utiliser isHome comme une prop, vous pouvez le supprimer ici et le laisser dans la section props ci-dessous.
+</script>
+
 <script>
-// add "isHome" prop
-import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
-import { useAuthStore } from '~/store/auth'; // import the auth store we just created
-const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
-
-const { authenticated, user } = storeToRefs(useAuthStore()); 
-
 export default {
   props: {
     isHome: {
@@ -61,17 +69,7 @@ export default {
       default: false,
     },
   },
-  setup() {
-    return {
-      authenticated,
-      logUserOut,
-      user,
-    };
-  },
-
-
 };
-
 </script>
 
 <style scoped>

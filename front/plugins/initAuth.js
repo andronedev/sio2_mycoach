@@ -1,31 +1,36 @@
+// Importation du module 'storeToRefs' depuis 'pinia'
 import { storeToRefs } from 'pinia';
+// Importation du store 'useAuthStore' depuis '~/store/auth'
 import { useAuthStore } from '~/store/auth';
 
+// Définition d'un plugin Nuxt
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const { authenticated,user } = storeToRefs(useAuthStore()); // make authenticated state reactive
-  const token = useCookie('PHPSESSID'); // useCookie new hook in nuxt 3
+  // Obtention des références au store 'useAuthStore'
+  const { authenticated, user } = storeToRefs(useAuthStore()); // Rendre l'état 'authenticated' réactif
+  // Récupération du jeton d'authentification à partir des cookies en utilisant le nouveau hook 'useCookie' de Nuxt 3
+  const token = useCookie('PHPSESSID');
 
+  // Vérification de l'existence du jeton
   if (token.value) {
-    // check if value exists
-    // todo verify if token is valid, before updating the state
-
-    // fetch user data from api
+    // Vérification de la validité du jeton avant de mettre à jour l'état
+    // Appel à une API distante pour récupérer des données utilisateur
     const { data } = await useFetch('http://127.0.0.1/edsa-mycoach/me.php?action=info', {
       method: 'GET',
       credentials: 'include',
     });
+    // Vérification de la réussite de la requête
     if (data.value.success) {
-      authenticated.value = true; // update the state to authenticated
-      user.value.id = data.value.user.id; // set user id
-      user.value.email = data.value.user.email; // set user email
-      user.value.name = data.value.user.name; // set user name
-      
-      
+      // Mise à jour de l'état d'authentification en le définissant sur 'true'
+      authenticated.value = true;
+      // Mise à jour des données utilisateur
+      user.value.id = data.value.user.id; // Définition de l'identifiant de l'utilisateur
+      user.value.email = data.value.user.email; // Définition de l'adresse e-mail de l'utilisateur
+      user.value.name = data.value.user.name; // Définition du nom de l'utilisateur
     }
   }
-
 }, {
-    name: 'initAuth',
-    priority: 10,
-    global: true,
+  // Options du plugin
+  name: 'initAuth', // Nom du plugin
+  priority: 10, // Priorité du plugin
+  global: true, // Plugin global
 });

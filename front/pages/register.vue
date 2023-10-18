@@ -139,6 +139,14 @@ export default {
   },
 
   methods: {
+    /**
+     * Enregistre un nouvel utilisateur en envoyant les informations de formulaire à un serveur distant.
+     * Si l'enregistrement est réussi, l'utilisateur est automatiquement authentifié et redirigé vers la page d'activités.
+     * Sinon, un message d'erreur est affiché.
+     * @function
+     * @name register
+     * @returns {void}
+     */
     register() {
       this.loading = true;
       const formData = new FormData();

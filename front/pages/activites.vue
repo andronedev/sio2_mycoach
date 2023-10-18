@@ -6,44 +6,49 @@
       class="flex flex-col md:flex-row justify-center items-start reallyfulltable"
     >
     <div class="m-4 h-full w-full select-none border-collapse rounded-lg overflow-hidden shadow-xl bg-gray-50 border-2 border-gray-400">
-    <table class=" table-fixed  h-full w-full rounded-lg overflow-hidden">
+        <table class=" table-fixed  h-full w-full rounded-lg overflow-hidden">
 
-        <thead class="bg-gray-300">
-          <tr > 
-            <th class="px-4 py-2 w-20">Heure</th>
-            <th
-              class="px-4 py-2"
-              v-for="day in days"
-              :key="day"
-            >
-              {{ day }}
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr
-            v-for="hour in hours"
-            class="border border-gray-300"
-            :key="hour"
+      <!-- En-tête du tableau -->
+      <thead class="bg-gray-300">
+        <tr > 
+          <th class="px-4 py-2 w-20">Heure</th>
+          <!-- Boucle pour afficher les jours de la semaine -->
+          <th
+            class="px-4 py-2"
+            v-for="day in days"
+            :key="day"
           >
-            <td class="px-4 py-2">{{ hour }}</td>
+            {{ day }}
+          </th>
+        </tr>
+      </thead>
 
-            <td
-              class="px-4 py-2 text-black text-center font-semibold border border-gray-300 "
-              v-for="day in days"
-              :class="{
-                'bg-orange-200': getSession(day, hour),
-                'cursor-pointer': getSession(day, hour),
-              }"
-              @click="select(day, hour)"
-              :key="day"
-            >
-              {{ getSession(day, hour) ? getSession(day, hour).activity : "" }}
-            </td>
-          </tr>
-        </tbody>
-      </table></div>
+      <!-- Corps du tableau -->
+      <tbody>
+        <!-- Boucle pour afficher les heures de la journée -->
+        <tr
+          v-for="hour in hours"
+          class="border border-gray-300"
+          :key="hour"
+        >
+          <td class="px-4 py-2">{{ hour }}</td>
+
+          <!-- Boucle pour afficher les activités programmées pour chaque jour de la semaine et chaque heure de la journée -->
+          <td
+            class="px-4 py-2 text-black text-center font-semibold border border-gray-300 "
+            v-for="day in days"
+            :class="{
+              'bg-orange-200': getSession(day, hour),
+              'cursor-pointer': getSession(day, hour),
+            }"
+            @click="select(day, hour)"
+            :key="day"
+          >
+            {{ getSession(day, hour) ? getSession(day, hour).activity : "" }}
+          </td>
+        </tr>
+      </tbody>
+    </table></div>
       <div class="flex-auto w-full md:w-96 flex flex-col m-4 md:ml-0">
         <div class="p-4 bg-orange-300 rounded-lg shadow-lg w-full shadow-inner">
           <div v-if="selected">
@@ -121,6 +126,12 @@ export default {
   },
 
   methods: {
+    /**
+     * Récupère la session correspondante au jour et à l'heure donnés.
+     * @param {string} day - Le jour de la session (en minuscules).
+     * @param {string} hour - L'heure de la session (au format "hh:mm-hh:mm").
+     * @returns {Object} - La session correspondante ou undefined si aucune session n'est trouvée.
+     */
     getSession(day, hour) {
       return this.sessions.find((s) => {
         const [start, end] = s.hour.split("-");
@@ -129,14 +140,26 @@ export default {
       });
     },
 
+    /**
+     * Sélectionne la session correspondante au jour et à l'heure donnés.
+     * @param {string} day - Le jour de la session (en minuscules).
+     * @param {string} hour - L'heure de la session (au format "hh:mm-hh:mm").
+     */
     select(day, hour) {
       const session = this.getSession(day, hour);
       if (session) {
         this.selected = session;
       }
-    },
+    }
   },
 
+  /**
+   * Effectue une requête fetch pour récupérer les activités depuis l'API.
+   * Les données récupérées sont ensuite utilisées pour remplir la liste des sessions.
+   * @function mounted
+   * @memberof Activites
+   * @returns {void}
+   */
   mounted() {
     fetch("http://127.0.0.1/edsa-mycoach/api.php?resource=activities")
       .then((response) => response.json())

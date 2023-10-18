@@ -128,6 +128,12 @@ const error = ref(null);
 
 const router = useRouter();
 
+/**
+ * Fonction asynchrone qui permet de connecter un utilisateur.
+ * @function login
+ * @async
+ * @returns {Promise<void>}
+ */
 const login = async () => {
   loading.value = true;
   error.value = null;

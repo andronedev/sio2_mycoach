@@ -58,7 +58,6 @@ const logUserOut = () => {
   authStore.logUserOut();
 };
 
-const isHome = ref(false); // Si vous voulez toujours utiliser isHome comme une prop, vous pouvez le supprimer ici et le laisser dans la section props ci-dessous.
 </script>
 
 <script>

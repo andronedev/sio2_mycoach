@@ -19,7 +19,7 @@ definePageMeta({
   layout: "home",
 });
 export default {
-  // use layout home
+
 
 }
  

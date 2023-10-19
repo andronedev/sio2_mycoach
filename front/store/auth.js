@@ -8,20 +8,19 @@ export default { store: setActivePinia(pinia) }
 
 // Définition du store 'useAuthStore'
 export const useAuthStore = defineStore('auth', {
-    state: () => (
-        {
-            authenticated: false, // État d'authentification initial à "false"
-            loading: false, // État de chargement initial à "false"
-            user: {
-                id: null, // Identifiant utilisateur initial à "null"
-                email: null, // Adresse e-mail utilisateur initial à "null"
-                name: null // Nom utilisateur initial à "null"
-            }
-        }
-    ),
+    state: () => ({
+        authenticated: false,
+        loading: true,
+        user_id: null,
+        user_email: null,
+        user_name: null,
+    }),
+    
     actions: {
         // Action asynchrone pour authentifier l'utilisateur
         async authenticateUser({ email, password }) {
+            this.loading = true;
+
             // Utilisation de FormData pour préparer les données de la requête
             const formData = new FormData();
             formData.append('action', 'login');
@@ -34,24 +33,26 @@ export const useAuthStore = defineStore('auth', {
                 body: formData
             });
 
-            // Mise à jour de l'état de chargement
-            this.loading = pending;
 
             // Vérification du succès de la requête
             if (data.value.success) {
                 const token = useCookie('PHPSESSID'); // Utilisation du nouveau hook 'useCookie' de Nuxt 3
                 token.value = data.value.token; // Définition du jeton dans le cookie
-                this.user.id = data.value.user.id; // Mise à jour de l'identifiant utilisateur
-                this.user.email = data.value.user.email; // Mise à jour de l'adresse e-mail utilisateur
-                this.user.name = data.value.user.name; // Mise à jour du nom utilisateur
+                this.user_id = data.value.user.id; // Mise à jour de l'identifiant utilisateur
+                this.user_email = data.value.user.email; // Mise à jour de l'adresse e-mail utilisateur
+                this.user_name = data.value.user.name; // Mise à jour du nom utilisateur
                 this.authenticated = true; // Définition de l'état d'authentification à "true"
             }
+            this.loading = false;
         },
         // Action pour déconnecter l'utilisateur
         logUserOut() {
             const token = useCookie('PHPSESSID'); // Utilisation du nouveau hook 'useCookie' de Nuxt 3
             this.authenticated = false; // Définition de l'état d'authentification à "false"
             token.value = null; // Effacement du jeton du cookie
+            this.user_id = null; // Effacement de l'identifiant utilisateur
+            this.user_email = null; // Effacement de l'adresse e-mail utilisateur
+            this.user_name = null; // Effacement du nom utilisateur
         }
     }
 });

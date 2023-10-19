@@ -118,6 +118,8 @@ const { authenticateUser } = useAuthStore(); // use authenticateUser action from
 
 const { authenticated } = storeToRefs(useAuthStore()); 
 
+const router = useRouter();
+
 const user = ref({
   email: '',
   password: '',
@@ -126,9 +128,8 @@ const user = ref({
 const loading = ref(false);
 const error = ref(null);
 
-const router = useRouter();
 
-/**
+/** 
  * Fonction asynchrone qui permet de connecter un utilisateur.
  * @function login
  * @async
@@ -144,10 +145,10 @@ const login = async () => {
       router.push('/activites');
     } else {
       error.value = 'Identifiants incorrects';
+      loading.value = false;
     }
   } catch (err) {
     error.value = err.message;
-  } finally {
     loading.value = false;
   }
 };

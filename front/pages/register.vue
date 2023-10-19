@@ -118,9 +118,7 @@
 import { useAuthStore } from "~/store/auth"; // import the auth store we just created
 import { storeToRefs } from "pinia"; // import storeToRefs helper hook from pinia
 const { authenticated } = storeToRefs(useAuthStore());
-
 const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
-const router = useRouter();
 definePageMeta({
   pageTransition: {
     name: "slide-left",
@@ -170,17 +168,24 @@ export default {
               password: this.password,
             });
             if (authenticated.value) {
-              router.push("/activites");
+              
+              this.redirect();
             } else {
               error.value = "Identifiants incorrects";
             }
-            alert("Vous êtes connecté !");
           }
         })
         .finally(() => {
           this.loading = false;
         });
     },
+  },
+  setup() {
+    const router = useRouter();
+    function redirect() {
+      router.push("/activites");
+    }
+    return { redirect };
   },
 };
 </script>

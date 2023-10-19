@@ -6,12 +6,16 @@ import { useAuthStore } from '~/store/auth';
 // Définition d'un plugin Nuxt
 export default defineNuxtPlugin(async (nuxtApp) => {
   // Obtention des références au store 'useAuthStore'
-  const { authenticated, user } = storeToRefs(useAuthStore()); // Rendre l'état 'authenticated' réactif
+  const { authenticated, user, loading } = storeToRefs(useAuthStore()); // Rendre l'état 'authenticated' réactif
+  loading.value = true; // Mise à jour de l'état de chargement à "true"
+
   // Récupération du jeton d'authentification à partir des cookies en utilisant le nouveau hook 'useCookie' de Nuxt 3
   const token = useCookie('PHPSESSID');
 
   // Vérification de l'existence du jeton
   if (token.value) {
+
+    
     // Vérification de la validité du jeton avant de mettre à jour l'état
     // Appel à une API distante pour récupérer des données utilisateur
     const { data } = await useFetch('http://127.0.0.1/edsa-mycoach/me.php?action=info', {
@@ -23,11 +27,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       // Mise à jour de l'état d'authentification en le définissant sur 'true'
       authenticated.value = true;
       // Mise à jour des données utilisateur
-      user.value.id = data.value.user.id; // Définition de l'identifiant de l'utilisateur
+      userid = data.value.user.id; // Définition de l'identifiant de l'utilisateur
       user.value.email = data.value.user.email; // Définition de l'adresse e-mail de l'utilisateur
       user.value.name = data.value.user.name; // Définition du nom de l'utilisateur
     }
   }
+  loading.value = false; // Mise à jour de l'état de chargement à "false"
+
 }, {
   // Options du plugin
   name: 'initAuth', // Nom du plugin

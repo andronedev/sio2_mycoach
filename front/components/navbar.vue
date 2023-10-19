@@ -14,7 +14,17 @@
             >
           </li>
         </ul>
-        <ul class="flex justify-start space-x-4 pr-4" v-if="!authenticated">
+        <ul class="flex justify-start space-x-4 pr-4" v-show="loading">
+          <li>
+            <a
+              href="#"
+              class="text-black font-semibold bg-secondary px-4 py-2 rounded-xl disabled:opacity-50"
+            >
+              Chargement...
+            </a>
+          </li>
+        </ul>
+        <ul class="flex justify-start space-x-4 pr-4" v-if="!authenticated && !loading">
           <li>
             <NuxtLink to="/login" class="hover:text-blue-900">Connexion</NuxtLink>
           </li>
@@ -27,9 +37,9 @@
             </NuxtLink>
           </li>
         </ul>
-        <ul class="flex justify-start space-x-4 pr-4" v-else>
+        <ul class="flex justify-start space-x-4 pr-4" v-else-if="authenticated && !loading">
           <li>
-            <NuxtLink to="/profile" class="hover:text-blue-900">{{ user.name }}</NuxtLink>
+            <NuxtLink to="/profil" class="hover:text-blue-900">{{ user }}</NuxtLink>
           </li>
           <li>
             <a
@@ -46,27 +56,42 @@
   </header>
 </template>
 
-<script setup>
+<script>
 import { ref, computed } from 'vue';
 import { useAuthStore } from '~/store/auth';
 
-const authStore = useAuthStore();
-const authenticated = computed(() => authStore.authenticated);
-const user = computed(() => authStore.user);
 
-const logUserOut = () => {
-  authStore.logUserOut();
-};
 
-</script>
-
-<script>
 export default {
   props: {
     isHome: {
       type: Boolean,
       default: false,
     },
+  },
+  setup() {
+    const authStore = useAuthStore();
+    const authenticated = computed(() => authStore.authenticated);
+    const user = computed(() => authStore.name);
+    const loading = computed(() => authStore.loading);
+    const router = useRouter();
+
+
+    const logUserOut = async () => {
+      authStore.logUserOut();
+      console.log('logged out, redirecting to login page');
+      console.log('current route', router.currentRoute.value);
+      router.push('/login');
+      router.go();
+      console.log('redirected to login page');
+    };
+
+    return {
+      authenticated,
+      user,
+      loading,
+      logUserOut,
+    };
   },
 };
 </script>

@@ -6,7 +6,7 @@ import { useAuthStore } from '~/store/auth';
 // Définition d'un plugin Nuxt
 export default defineNuxtPlugin(async (nuxtApp) => {
   // Obtention des références au store 'useAuthStore'
-  const { authenticated, user, loading } = storeToRefs(useAuthStore()); // Rendre l'état 'authenticated' réactif
+  const { authenticated, user_email, user_id, user_name, loading } = storeToRefs(useAuthStore()); // Rendre l'état 'authenticated' réactif
   loading.value = true; // Mise à jour de l'état de chargement à "true"
 
   // Récupération du jeton d'authentification à partir des cookies en utilisant le nouveau hook 'useCookie' de Nuxt 3
@@ -27,9 +27,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       // Mise à jour de l'état d'authentification en le définissant sur 'true'
       authenticated.value = true;
       // Mise à jour des données utilisateur
-      userid = data.value.user.id; // Définition de l'identifiant de l'utilisateur
-      user.value.email = data.value.user.email; // Définition de l'adresse e-mail de l'utilisateur
-      user.value.name = data.value.user.name; // Définition du nom de l'utilisateur
+      console.log("user : " +user_name.value);
+      user_id.value = data.value.user.id; // Définition de l'identifiant de l'utilisateur
+      user_email.value = data.value.user.email; // Définition de l'adresse e-mail de l'utilisateur
+      user_name.value = data.value.user.name; // Définition du nom de l'utilisateur
     }
   }
   loading.value = false; // Mise à jour de l'état de chargement à "false"

@@ -9,7 +9,7 @@ import { useAuthStore } from "~/store/auth";
  */
 export default defineNuxtRouteMiddleware(async (to, from) => {
   // Obtention des références au store 'useAuthStore'
-  const { authenticated, user } = storeToRefs(useAuthStore());
+  const { authenticated, user_id, user_email, user_name } = storeToRefs(useAuthStore());
   // Récupération du jeton d'authentification à partir des cookies
   const token = useCookie("PHPSESSID");
 
@@ -26,10 +26,11 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     // Vérification de la réussite de la requête
     if (data.value.success) {
       // Mise à jour de l'état d'authentification et des données utilisateur
+      console.log("user : " + user_name.value);
       authenticated.value = true;
-      user.value.id = data.value.user.id;
-      user.value.email = data.value.user.email;
-      user.value.name = data.value.user.name;
+      user_id.value = data.value.user.id;
+      user_email.value = data.value.user.email;
+      user_name.value = data.value.user.name;
     }
   }
 

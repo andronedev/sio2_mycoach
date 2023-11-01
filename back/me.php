@@ -36,7 +36,9 @@ try {
   switch ($_GET['action']) {
     case "info":
       if (!isset($_SESSION['user'])) {
-        throw new Exception('Vous devez être connecté');
+        $output['success'] = false;
+        $output['error'] = 'Utilisateur non connecté';
+        break;
       }
       $output['success'] = true;
       $output['user'] = $_SESSION['user'];
@@ -46,7 +48,9 @@ try {
       $output['success'] = true;
       break;
   }
-  echo json_encode($output);
 } catch (Exception $e) {
+  $output['success'] = false;
   $output['error'] = $e->getMessage();
 }
+
+echo json_encode($output);

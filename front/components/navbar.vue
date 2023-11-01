@@ -39,7 +39,7 @@
         </ul>
         <ul class="flex justify-start space-x-4 pr-4" v-else-if="authenticated && !loading">
           <li>
-            <NuxtLink to="/profil" class="hover:text-blue-900">{{ user }}</NuxtLink>
+            <NuxtLink to="/profil" class="hover:text-blue-900">Connecté en tant que <b>{{ user_name }}</b></NuxtLink>
           </li>
           <li>
             <a
@@ -72,7 +72,7 @@ export default {
   setup() {
     const authStore = useAuthStore();
     const authenticated = computed(() => authStore.authenticated);
-    const user = computed(() => authStore.name);
+    const user_name = computed(() => authStore.user_name);
     const loading = computed(() => authStore.loading);
     const router = useRouter();
 
@@ -88,7 +88,7 @@ export default {
 
     return {
       authenticated,
-      user,
+      user_name,
       loading,
       logUserOut,
     };

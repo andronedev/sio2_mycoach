@@ -36,12 +36,15 @@ export const useAuthStore = defineStore('auth', {
 
             // Vérification du succès de la requête
             if (data.value.success) {
+                
                 const token = useCookie('PHPSESSID'); // Utilisation du nouveau hook 'useCookie' de Nuxt 3
                 token.value = data.value.token; // Définition du jeton dans le cookie
                 this.user_id = data.value.user.id; // Mise à jour de l'identifiant utilisateur
                 this.user_email = data.value.user.email; // Mise à jour de l'adresse e-mail utilisateur
-                this.user_name = data.value.user.name; // Mise à jour du nom utilisateur
+                this.user_name = data.value.user.nom; // Mise à jour du nom utilisateur
                 this.authenticated = true; // Définition de l'état d'authentification à "true"
+                console.log('Store updated:', this.user_name, this.user_email);
+
             }
             this.loading = false;
         },
@@ -53,6 +56,7 @@ export const useAuthStore = defineStore('auth', {
             this.user_id = null; // Effacement de l'identifiant utilisateur
             this.user_email = null; // Effacement de l'adresse e-mail utilisateur
             this.user_name = null; // Effacement du nom utilisateur
-        }
+        },
+
     }
 });

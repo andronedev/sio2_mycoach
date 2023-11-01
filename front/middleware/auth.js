@@ -30,7 +30,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       authenticated.value = true;
       user_id.value = data.value.user.id;
       user_email.value = data.value.user.email;
-      user_name.value = data.value.user.name;
+      user_name.value = data.value.user.nom;
     }
   }
 

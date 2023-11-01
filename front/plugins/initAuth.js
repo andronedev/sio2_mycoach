@@ -25,15 +25,19 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     // Vérification de la réussite de la requête
     if (data.value.success) {
       // Mise à jour de l'état d'authentification en le définissant sur 'true'
-      authenticated.value = true;
       // Mise à jour des données utilisateur
-      console.log("user : " +user_name.value);
+      console.log("user : " +data.value.user.nom);
       user_id.value = data.value.user.id; // Définition de l'identifiant de l'utilisateur
       user_email.value = data.value.user.email; // Définition de l'adresse e-mail de l'utilisateur
-      user_name.value = data.value.user.name; // Définition du nom de l'utilisateur
+      user_name.value = data.value.user.nom; // Définition du nom de l'utilisateur
+      authenticated.value = true;
+
+      console.log('Store updated:', user_name, user_email);
+
     }
   }
   loading.value = false; // Mise à jour de l'état de chargement à "false"
+
 
 }, {
   // Options du plugin

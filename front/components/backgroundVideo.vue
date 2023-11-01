@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <video autoplay muted loop id="bkgrdVideo" class="fullscreen-video">
-      <source src="cinematicv3.mp4" type="video/mp4" />
+      <source src="/cinematicv3.mp4" type="video/mp4" />
     </video>
     <slot class="middle" />
   </div>

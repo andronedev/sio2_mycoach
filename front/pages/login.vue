@@ -94,7 +94,7 @@
             id="bkgrdVideo"
             class="w-full h-full bg-black object-cover shadow-inner"
           >
-            <source src="cinematicv3.mp4" type="video/mp4" />
+            <source src="/cinematicv3.mp4" type="video/mp4" />
           </video>
         </div>
       </div>

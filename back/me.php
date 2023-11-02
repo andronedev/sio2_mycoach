@@ -3,12 +3,12 @@
 include 'db.php';
 
 /**
- * Définit les en-têtes de réponse HTTP pour autoriser les requêtes CORS depuis https://sio.androne.dev/.
+ * Définit les en-têtes de réponse HTTP pour autoriser les requêtes CORS depuis https://mycoach.androne.dev/.
  * Le type de contenu de la réponse est défini comme JSON.
  * Les requêtes avec des informations d'authentification sont autorisées.
  */
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: https://sio.androne.dev');
+header('Access-Control-Allow-Origin: https://mycoach.androne.dev');
 header('Access-Control-Allow-Credentials: true');
 
 // Gestion des erreurs

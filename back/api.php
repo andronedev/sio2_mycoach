@@ -3,7 +3,7 @@
 require 'db.php';
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: https://sio.androne.dev');
+header('Access-Control-Allow-Origin: https://mycoach.androne.dev');
 header('Access-Control-Allow-Credentials: true');
 session_start();
 

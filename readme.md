@@ -2,7 +2,7 @@
 
 Permet de centraliser les informations des activités d'un coach sportif et de permettre aux utilisateurs de s'informer et dans un autre temps de pouvoir s'inscrire à une activité.
 
-> Le site de démonstration est disponible à l'adresse suivante : [https://sio.androne.dev](https://sio.androne.dev)
+> Le site de démonstration est disponible à l'adresse suivante : [https://mycoach.androne.dev](https://mycoach.androne.dev)
 
 # Sommaire
 

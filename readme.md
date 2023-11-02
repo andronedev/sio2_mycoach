@@ -60,11 +60,11 @@ Permet de centraliser les informations des activités d'un coach sportif et de p
 ### Spring 4 - Gérer utilisateurs connectés
 
 - [X] Page de connexion
-- [ ] Page d'inscription
+- [X] Page d'inscription
 
 ### Spring 5 - Ajouter une fonctionnalité
 
-- [ ] Page de profil
+- [X] Page de profil
 
 
 ## Comment sont organisés les fichiers ?

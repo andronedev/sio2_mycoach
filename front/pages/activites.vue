@@ -76,7 +76,7 @@
         >
           <h1 class="font-semibold">Je veux m'inscrire pour le créneau :</h1>
 
-          <div class="text-gray-300 font-light bg-gray-800 p-2 rounded-lg m-2 bg-opacity-90 shadow-inner">
+          <div class="text-gray-300 font-light bg-gray-800 p-2 rounded-lg my-3 bg-opacity-90 shadow-inner">
             <Icon name="bx:bxs-calendar" size="16" />
             le <b>{{ selected ? selected.day : "" }}</b>
             <br />

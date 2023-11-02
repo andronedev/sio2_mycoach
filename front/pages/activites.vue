@@ -173,7 +173,9 @@ export default {
    * @returns {void}
    */
   mounted() {
-    fetch("http://127.0.0.1/edsa-mycoach/api.php?resource=activities")
+    fetch("http://127.0.0.1/edsa-mycoach/api.php?resource=activities",{
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

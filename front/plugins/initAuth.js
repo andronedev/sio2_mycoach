@@ -18,7 +18,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     
     // Vérification de la validité du jeton avant de mettre à jour l'état
     // Appel à une API distante pour récupérer des données utilisateur
-    const { data } = await useFetch('http://127.0.0.1/edsa-mycoach/me.php?action=info', {
+    const { data } = await useFetch('/api/me.php?action=info', {
       method: 'GET',
       credentials: 'include',
     });

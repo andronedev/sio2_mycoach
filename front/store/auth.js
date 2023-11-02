@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth', {
             formData.append('password', password);
 
             // Appel à useFetch (de Nuxt 3) pour effectuer une requête HTTP
-            const { data, pending } = await useFetch('http://127.0.0.1/edsa-mycoach/auth.php', {
+            const { data, pending } = await useFetch('/api/auth.php', {
                 method: 'POST',
                 body: formData
             });

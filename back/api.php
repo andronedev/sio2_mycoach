@@ -3,7 +3,7 @@
 require 'db.php';
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: http://127.0.0.1:3000');
+header('Access-Control-Allow-Origin: https://sio.androne.dev');
 header('Access-Control-Allow-Credentials: true');
 session_start();
 

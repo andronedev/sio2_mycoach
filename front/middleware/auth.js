@@ -17,7 +17,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (token.value) {
     // Appel à une API distante pour récupérer des données utilisateur
     const { data } = await useFetch(
-      "http://127.0.0.1/edsa-mycoach/me.php?action=info",
+      "/api/me.php?action=info",
       {
         method: "GET",
         credentials: "include",

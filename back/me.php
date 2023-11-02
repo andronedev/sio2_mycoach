@@ -3,12 +3,12 @@
 include 'db.php';
 
 /**
- * Définit les en-têtes de réponse HTTP pour autoriser les requêtes CORS depuis http://127.0.0.1:3000/.
+ * Définit les en-têtes de réponse HTTP pour autoriser les requêtes CORS depuis https://sio.androne.dev/.
  * Le type de contenu de la réponse est défini comme JSON.
  * Les requêtes avec des informations d'authentification sont autorisées.
  */
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: http://127.0.0.1:3000');
+header('Access-Control-Allow-Origin: https://sio.androne.dev');
 header('Access-Control-Allow-Credentials: true');
 
 // Gestion des erreurs

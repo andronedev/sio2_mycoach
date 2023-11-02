@@ -153,7 +153,7 @@ export default {
       formData.append("email", this.email);
       formData.append("password", this.password);
 
-      fetch("http://127.0.0.1/edsa-mycoach/auth.php", {
+      fetch("/api/auth.php", {
         method: "POST",
         body: formData,
       })

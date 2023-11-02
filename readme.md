@@ -1,10 +1,12 @@
-# MyCoach
+# MyCoach [Projet SIO 2 - BTS SIO]
 
 Permet de centraliser les informations des activités d'un coach sportif et de permettre aux utilisateurs de s'informer et dans un autre temps de pouvoir s'inscrire à une activité.
 
+> Le site de démonstration est disponible à l'adresse suivante : [https://sio.androne.dev](https://sio.androne.dev)
+
 # Sommaire
 
-- [MyCoach](#mycoach)
+- [MyCoach \[Projet SIO 2 - BTS SIO\]](#mycoach-projet-sio-2---bts-sio)
 - [Sommaire](#sommaire)
   - [Environnement de développement](#environnement-de-développement)
       - [Pour le back-end](#pour-le-back-end)

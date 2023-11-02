@@ -98,26 +98,32 @@ Permet de centraliser les informations des activités d'un coach sportif et de p
   - `api.php?resource=activities` : retourne la liste des activités : 
     ```json
     [
-        {
-        "id": "1",
-        "nom": "Musculation",
-        "description": "Renforcement musculaire avec haltères et machines",
-        "jour": "lundi",
-        "horaire": "18h-20h",
-        "id_activite": "1",
-        "id_coach": "1",
-        "id_lieu": "1"
-        },
-        {
-        "id": "2",
-        "nom": "Natation",
-        "description": "Nage en bassin",
-        "jour": "mardi",
-        "horaire": "12h-13h",
-        "id_activite": "2",
-        "id_coach": "2",
-        "id_lieu": "2"
-        },
+      {
+      "id": "1",
+      "nom": "Gymnase Municipal",
+      "description": "Renforcement musculaire avec haltères et machines",
+      "jour": "lundi",
+      "horaire": "18h-20h",
+      "id_activite": "1",
+      "id_coach": "1",
+      "id_lieu": "1",
+      "adresse": "5 rue du Stade",
+      "cp": "75001",
+      "ville": "Paris"
+      },
+      {
+      "id": "2",
+      "nom": "Piscine Olympique",
+      "description": "Nage en bassin",
+      "jour": "mardi",
+      "horaire": "12h-13h",
+      "id_activite": "2",
+      "id_coach": "2",
+      "id_lieu": "2",
+      "adresse": "10 boulevard des Sports",
+      "cp": "75015",
+      "ville": "Paris"
+      },
     ]
     ```
 - `db.php` : Ce fichier contient les fonctions pour se connecter à la base de données et exécuter des requêtes SQL.

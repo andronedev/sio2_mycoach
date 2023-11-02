@@ -87,7 +87,7 @@
           <button
             class="mt-2 bg-green-500 hover:bg-green-700 text-black hover:text-white font-bold py-2 px-4 rounded-md w-full"
           >
-            Reserver <Icon name="bx:bxs-flag-checkered" size="16" />
+            Réserver <Icon name="bx:bxs-flag-checkered" size="16" />
           </button>
         </div>
       </div>

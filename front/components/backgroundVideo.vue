@@ -13,12 +13,7 @@
   height: 100%;
   object-fit: cover;
   position: fixed;
+  overflow: scroll;
 }
 
-.middle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 </style>

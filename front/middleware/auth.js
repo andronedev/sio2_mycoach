@@ -31,15 +31,19 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       user_id.value = data.value.user.id;
       user_email.value = data.value.user.email;
       user_name.value = data.value.user.nom;
+    } else {
+      // Effacement du jeton du cookie
+      token.value = null;
     }
   }
 
   // Gestion des redirections en fonction de l'état de l'authentification et de la destination
   if (token.value && to?.name === "login") {
-    return navigateTo("/");
+    console.log("already logged in");
+    return navigateTo("/activites");
   }
 
-  if (!token.value && to?.name !== "login") {
+  if (!authenticated.value && (to?.name !== "login" && to?.name !== "register")) {
     // Annulation de la navigation et redirection vers la page de connexion
     abortNavigation();
     return navigateTo("/login");

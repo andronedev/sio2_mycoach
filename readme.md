@@ -1,4 +1,5 @@
-# MyCoach [Projet SIO 2 - BTS SIO]
+# MyCoach - Votre Compagnon de Coaching Sportif 🏋️‍♀️📲
+## [Projet SIO 2 - BTS SIO]
 
 Permet de centraliser les informations des activités d'un coach sportif et de permettre aux utilisateurs de s'informer et dans un autre temps de pouvoir s'inscrire à une activité.
 

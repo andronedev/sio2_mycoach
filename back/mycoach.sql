@@ -62,9 +62,6 @@ CREATE TABLE `coachs` (
 
 INSERT INTO `coachs` (`id`, `nom`, `prenom`) VALUES
 (1, 'Dupont', 'Jean'),
-(2, 'Durand', 'Pierre'),
-(3, 'Martin', 'Sophie'),
-(4, 'Leroux', 'Claire');
 
 -- --------------------------------------------------------
 
@@ -135,15 +132,6 @@ CREATE TABLE `utilisateurs` (
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `nom`, `email`, `mot_de_passe`) VALUES
-(4, 'testtesttest', 'email@sqdqsd.com', '$2y$10$cWKcIdoODZj1Nh.0yYStLOm6eOZkNu5f4Yda4.q4oOuL2y9iPrj/u'),
-(5, 'Nicolas', 'andronedev@gmail.com', '$2y$10$uaxhdIpkXI/Xxcp395onyeTyDT3HYi4aBMp3EituF1nXe.JMs8T/2'),
-(6, 'test', 'test@testttt.Fr', '$2y$10$BTqUu091Kmp2lEIS3e/SludNxQ8wKW.N8cVsQVR81dPlprBKmGrJ6'),
-(7, 'qsdsqdqsd', 'qsdqsdqsdqs@qsdqsd.qsd', '$2y$10$TC99MDS2IvIJKX/7wIvkAe3temVoZecnITKX3Wqn6etKJNhbfiJ4i'),
-(8, 'qsdqsdsqd', 'qsdsqdsqzaezezae@azeaz.sd', '$2y$10$1YOHQ/v28sXNGsWlD1WXwuuJ.KFbr6Ox4zrPDGUYgExMRJh5zjuSC'),
-(9, 'qsdqsdezoijflki', 'jndkfsqdr@ezidsjqs.Dfer', '$2y$10$lq8uVdcJx5orKvCFxp6rxO3nS3KKN0TIzDciNhPAr.9LrzIiLuVei'),
-(10, 'test', 'andronedevds@gmail.com', '$2y$10$Z9L5ZnmiypwHudON4xJPqelMsJHDxPwWhWA2rcF0qmIs4zsMPuUL6'),
-(11, 'test', 'testss@test.fr', '$2y$10$eV5aOIsYtEj9IjXCp27Are/e1qlhzCfrwixW0Sn9BupZBPDIvuFwa');
 
 --
 -- Index pour les tables déchargées

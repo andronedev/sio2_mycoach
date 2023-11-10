@@ -37,6 +37,10 @@ Permet de centraliser les informations des activités d'un coach sportif et de p
 - Nuxt.js
 - tailwindcss
 
+#### Base de données
+
+[Télécharger la base de données SQL](https://github.com/andronedev/sio2_mycoach/blob/main/back/mycoach.sql)
+
 #### Logiciels  
 
 - Visual Studio Code

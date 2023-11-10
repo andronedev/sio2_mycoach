@@ -69,8 +69,21 @@ Permet de centraliser les informations des activités d'un coach sportif et de p
 - [X] Page de profil
 
 
-## Comment sont organisés les fichiers ?
+# Structure du Projet 📁
 
+## Frontend 🌐
+
+- 📂 **front**
+  - 📂 **assets**
+    - 📂 **css**
+  - 📂 **components** 💡
+  - 📂 **layouts** 📐
+  - 📂 **middleware** 🔗
+  - 📂 **pages** 📄
+  - 📂 **plugins** 🔌
+  - 📂 **public** 🌍
+  - 📂 **store** 🗃️
+  
 ### Front-end (/front)
 - `package.json` : Ce fichier contient les dépendances du projet ainsi que les scripts pour lancer le projet.
 
@@ -93,6 +106,15 @@ Permet de centraliser les informations des activités d'un coach sportif et de p
 - `server/` : Ce dossier contient les fichiers pour le serveur de l'application.
 
 - `test/` : Ce dossier contient les fichiers de test de l'application.
+
+## Backend 🖥️
+
+- 📂 **back**
+  - 📄 **api.php** - Fichier de l'API.
+  - 📄 **auth.php** - Gestion de l'authentification.
+  - 📄 **db.php** - Connexion et opérations sur la base de données.
+  - 📄 **me.php** - Gestion des informations utilisateur.
+  - 📄 **mycoach.sql** - Structure de la base de données.
 
 ### Back-end (/back)
 
